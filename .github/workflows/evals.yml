@@ -1,0 +1,46 @@
+name: evals
+
+# Prompt 11 regression gate: runs the evaluation harness in mock mode on every
+# PR and push. Mock mode uses a deterministic provider + in-memory retriever, so
+# it needs no API keys and produces identical numbers each run. The build fails
+# if any forbidden claim leaks (fabrication) or grounding drops below 0.85.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      # Dummy values so pydantic-settings loads; mock mode makes no real calls.
+      SUPABASE_URL: https://ci.example.supabase.co
+      SUPABASE_SERVICE_KEY: ci
+      SUPABASE_JWT_SECRET: ci-secret
+      GEMINI_API_KEY: ci
+      ADZUNA_APP_ID: ci
+      ADZUNA_APP_KEY: ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run backend tests
+        run: python -m pytest -q
+      - name: Run eval harness (mock) with regression gate
+        run: >
+          python -m evaluation.harness --dataset v1 --mock
+          --min-grounding 0.85 --max-fabrication 0.0
+      - name: Upload eval report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: backend/evaluation/reports/latest.md

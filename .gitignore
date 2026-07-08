@@ -1,0 +1,38 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Env & secrets
+.env
+.env.local
+.env*.local
+
+# Binaries / build artifacts
+bin/
+dist/
+*.pdf
+
+# Eval harness generated reports (keep .gitkeep + latest.* as a README sample)
+backend/evaluation/reports/*
+!backend/evaluation/reports/.gitkeep
+!backend/evaluation/reports/latest.md
+!backend/evaluation/reports/latest.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

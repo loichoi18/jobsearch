@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* JobPilot AU design tokens (Prompt 10)
+   Light, modern SaaS. Slate neutrals, indigo primary.
+   Brand gradient (135deg indigo-500 -> violet-500) is used ONLY for:
+   primary CTAs, one hero headline word, stat numbers, the active nav
+   indicator, and soft decorative blobs.
+   Semantic colors carry meaning everywhere and are never swapped:
+   emerald = grounded/matched, amber = preferred-gap/warning,
+   red = unsupported/required-gap/error. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 222 47% 11%; /* slate-900 #0F172A */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 243 75% 59%; /* indigo-600 #4F46E5 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%; /* slate-100 */
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 98%; /* slate-50 #F8FAFC */
+    --muted-foreground: 215 19% 35%; /* slate-600 #475569 — AA on white */
+    --accent: 226 100% 97%; /* indigo-50 */
+    --accent-foreground: 243 75% 59%;
+    --destructive: 0 84% 60%; /* red-500 #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%; /* slate-200 #E2E8F0 */
+    --input: 214 32% 91%;
+    --ring: 243 75% 59%; /* indigo focus ring everywhere */
+    --radius: 0.75rem; /* 12px cards; controls use 8px explicitly */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .brand-gradient {
+    background-image: linear-gradient(135deg, #6366f1, #8b5cf6);
+  }
+  /* Only use at >=24px text — gradient text below that fails contrast. */
+  .gradient-text {
+    background-image: linear-gradient(135deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

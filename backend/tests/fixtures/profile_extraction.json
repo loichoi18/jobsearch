@@ -1,0 +1,29 @@
+{
+  "education": [
+    {
+      "institution": "UTS",
+      "degree": "Bachelor of Artificial Intelligence",
+      "field": "Artificial Intelligence",
+      "start_date": "2023",
+      "end_date": "2026",
+      "grade": "GPA 6.1/7"
+    }
+  ],
+  "experience": [],
+  "projects": [
+    {
+      "name": "Model Regression Detection",
+      "description": "pytest-based eval harness for LLM pipelines",
+      "tech": ["Python", "MLflow"],
+      "outcomes": []
+    }
+  ],
+  "skills": {
+    "technical": ["Python", "PyTorch", "SQL", "FastAPI"],
+    "tools": ["Docker"],
+    "soft": []
+  },
+  "certifications": [],
+  "visa_status": "Australian citizen",
+  "links": { "github": "github.com/lucas-ng" }
+}

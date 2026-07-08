@@ -1,0 +1,101 @@
+{
+  "name": "Reference Candidate",
+  "email": "reference.candidate@example.com",
+  "phone": "+61 400 000 000",
+  "location": "Sydney, NSW",
+  "visa_status": "Australian citizen — full working rights",
+  "links": {
+    "github": "https://github.com/reference-candidate",
+    "linkedin": "https://linkedin.com/in/reference-candidate"
+  },
+  "education": [
+    {
+      "institution": "University of Technology Sydney (UTS)",
+      "degree": "BSc Computer Science",
+      "graduation": "2025",
+      "gpa": "Distinction average (WAM 81)",
+      "highlights": [
+        "Capstone: LLM hallucination detection and evaluation",
+        "Coursework: machine learning, databases, distributed systems, algorithms"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Engineering Intern",
+      "company": "Sydney fintech scale-up",
+      "period": "Nov 2024 - Feb 2025",
+      "outcomes": [
+        "Built REST endpoints in Python (FastAPI) serving 2k requests/day",
+        "Added pytest coverage that caught 3 regressions before release",
+        "Wrote SQL reporting queries over a Postgres warehouse"
+      ]
+    },
+    {
+      "role": "Undergraduate Research Assistant",
+      "company": "UTS Data Science Lab",
+      "period": "Jul 2024 - Nov 2024",
+      "outcomes": [
+        "Prototyped a retrieval-augmented QA system over a document corpus",
+        "Ran embedding-similarity experiments and reported precision/recall"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "LLM Evaluation Harness",
+      "description": "A golden-dataset harness that measures hallucination/grounding rate for LLM outputs, with a regression gate in CI.",
+      "tech": ["Python", "PyTorch", "pytest", "GitHub Actions"],
+      "outcomes": [
+        "Automated grounding-rate and fabrication-rate assertions across 50 cases",
+        "Caught a model regression that dropped grounding rate by 9 points"
+      ]
+    },
+    {
+      "name": "RAG Job Copilot",
+      "description": "A retrieval-augmented app that drafts grounded application documents from a profile, with a claim-to-evidence verifier.",
+      "tech": ["Python", "FastAPI", "pgvector", "Next.js", "TypeScript"],
+      "outcomes": [
+        "Implemented hybrid retrieval (dense + sparse) fused with Reciprocal Rank Fusion",
+        "Built a grounding verifier that strips unsupported claims"
+      ]
+    },
+    {
+      "name": "Model Regression Detection",
+      "description": "A monitoring study that detects quality drift between model versions on a fixed evaluation set.",
+      "tech": ["Python", "pandas", "matplotlib"],
+      "outcomes": [
+        "Defined drift metrics and visualised version-over-version deltas"
+      ]
+    }
+  ],
+  "skills": {
+    "technical": [
+      "Python",
+      "PyTorch",
+      "Machine learning",
+      "LLM evaluation",
+      "Retrieval-augmented generation (RAG)",
+      "Embeddings / vector search",
+      "SQL",
+      "TypeScript",
+      "React / Next.js",
+      "REST API design"
+    ],
+    "tools": [
+      "FastAPI",
+      "PostgreSQL",
+      "pgvector",
+      "Git / GitHub Actions",
+      "Docker (basic)",
+      "pytest",
+      "pandas"
+    ],
+    "soft": [
+      "Written communication",
+      "Research and experimentation",
+      "Collaboration in small teams"
+    ]
+  },
+  "certifications": []
+}

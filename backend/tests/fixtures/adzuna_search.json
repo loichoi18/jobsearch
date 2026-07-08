@@ -1,0 +1,25 @@
+{
+  "count": 2,
+  "results": [
+    {
+      "id": 5001234567,
+      "title": "Machine Learning Internship",
+      "company": { "display_name": "Atlassian" },
+      "location": { "display_name": "Sydney, New South Wales" },
+      "salary_min": 60000,
+      "salary_max": 75000,
+      "description": "Join our ML platform team to build evaluation tooling for LLM features...",
+      "redirect_url": "https://www.adzuna.com.au/details/5001234567"
+    },
+    {
+      "id": 5007654321,
+      "title": "Graduate AI Engineer",
+      "company": { "display_name": "Canva" },
+      "location": { "display_name": "Melbourne, Victoria" },
+      "salary_min": null,
+      "salary_max": null,
+      "description": "Work on retrieval-augmented generation systems at scale...",
+      "redirect_url": "https://www.adzuna.com.au/details/5007654321"
+    }
+  ]
+}

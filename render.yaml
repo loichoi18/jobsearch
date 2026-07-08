@@ -1,0 +1,40 @@
+# Render Blueprint for the JobPilot AU FastAPI backend.
+# Deploy: Render Dashboard → New → Blueprint → point at this repo.
+# The frontend deploys separately on Vercel (see SETUP.md).
+#
+# Free-tier note: the service sleeps after ~15 min idle and cold-starts in
+# ~50s. The UI shows a "waking the server…" state; see README.
+services:
+  - type: web
+    name: jobpilot-au-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    region: singapore # closest free region to AU users
+    # build.sh installs Python deps AND downloads the Typst binary into ./bin
+    buildCommand: "bash build.sh"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      # Typst binary path (installed by build.sh)
+      - key: TYPST_BIN
+        value: ./bin/typst
+      # Secrets — set these in the Render dashboard (sync:false = not in git).
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ADZUNA_APP_ID
+        sync: false
+      - key: ADZUNA_APP_KEY
+        sync: false
+      # Your deployed Vercel URL, e.g. https://jobpilot-au.vercel.app
+      - key: FRONTEND_URL
+        sync: false

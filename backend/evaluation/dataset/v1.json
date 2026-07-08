@@ -1,0 +1,171 @@
+{
+  "version": "v1",
+  "notes": "Seed golden dataset for JobPilot AU. Cases pair a fixed reference profile (dataset/reference_profile.json) with realistic AU graduate/internship JDs. Every jd_text marked placeholder:true is a realistic stand-in — replace it with a real anonymized posting as they are collected (target: 25 cases, ~10 real). expected_keywords must be groundable from the reference profile; forbidden_claims are skills the JD demands that the reference profile does NOT have (the fabrication trap) and must never appear in a grounded output.",
+  "cases": [
+    {
+      "id": "ml-intern-sydney",
+      "title": "Machine Learning Engineer Intern",
+      "company": "Anonymized (Sydney AI scale-up)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "We are hiring a Machine Learning Engineer Intern to join our applied ML team in Sydney. You will help build and evaluate LLM-powered features, work with Python and PyTorch, and contribute to retrieval-augmented generation pipelines. You should be comfortable writing tests and reasoning about model quality. Nice to have: experience with vector databases and embeddings. This is a 12-week paid internship for penultimate or final-year students with full Australian working rights.",
+      "expected_keywords": ["Python", "PyTorch", "evaluation", "retrieval", "embeddings", "tests"],
+      "forbidden_claims": ["Kubernetes", "Go", "Kafka", "CUDA kernel"],
+      "max_pages": 1
+    },
+    {
+      "id": "data-science-grad",
+      "title": "Graduate Data Scientist",
+      "company": "Anonymized (Melbourne consultancy)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Graduate Data Scientist role for 2025/2026 graduates. Work across the analytics lifecycle: data cleaning, modelling in Python, and communicating findings to stakeholders. Strong SQL and machine learning fundamentals required. You will build models, validate them rigorously, and present results. Exposure to statistics and experimentation is valued.",
+      "expected_keywords": ["Python", "SQL", "machine learning", "models", "communicate"],
+      "forbidden_claims": ["R", "Tableau", "Power BI", "Spark", "SAS"],
+      "max_pages": 1
+    },
+    {
+      "id": "backend-grad-fastapi",
+      "title": "Graduate Backend Engineer",
+      "company": "Anonymized (fintech)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Join our platform team as a Graduate Backend Engineer. You will design and ship REST APIs in Python, write automated tests, and work with a Postgres database. We value clean code, good testing habits, and clear written communication. Experience with FastAPI is a plus. Docker familiarity welcome.",
+      "expected_keywords": ["Python", "REST", "FastAPI", "Postgres", "tests", "Docker"],
+      "forbidden_claims": ["Java", "Kotlin", "Spring Boot", "Terraform"],
+      "max_pages": 1
+    },
+    {
+      "id": "ai-research-intern",
+      "title": "AI Research Intern (LLM Evaluation)",
+      "company": "Anonymized (research lab)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "We are seeking an AI Research Intern to work on evaluation of large language models. You will design evaluation datasets, measure hallucination and grounding, and run reproducible experiments. Strong Python skills and a research mindset are essential. Familiarity with retrieval-augmented generation and embeddings is highly desirable.",
+      "expected_keywords": ["Python", "evaluation", "hallucination", "grounding", "retrieval", "experiments"],
+      "forbidden_claims": ["JAX", "TPU", "Rust", "distributed training at scale"],
+      "max_pages": 1
+    },
+    {
+      "id": "fullstack-intern-nextjs",
+      "title": "Full-Stack Engineering Intern",
+      "company": "Anonymized (SaaS startup)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Full-Stack Engineering Intern to build product features end to end. Frontend in React/Next.js and TypeScript; backend in Python. You will ship user-facing features, write tests, and collaborate in a small team. We care about product sense and clear communication.",
+      "expected_keywords": ["React", "Next.js", "TypeScript", "Python", "tests", "team"],
+      "forbidden_claims": ["Vue", "Angular", "Ruby on Rails", "GraphQL federation"],
+      "max_pages": 1
+    },
+    {
+      "id": "mlops-grad",
+      "title": "Graduate ML Platform Engineer",
+      "company": "Anonymized (enterprise)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Graduate ML Platform Engineer to support model deployment and monitoring. You will help operationalise ML models, build evaluation and regression checks, and automate pipelines with Python and Git-based CI. Understanding of model quality metrics and drift is important.",
+      "expected_keywords": ["Python", "evaluation", "regression", "CI", "model quality", "drift"],
+      "forbidden_claims": ["Kubernetes", "Terraform", "Airflow", "MLflow", "Kubeflow"],
+      "max_pages": 1
+    },
+    {
+      "id": "data-engineer-intern",
+      "title": "Data Engineering Intern",
+      "company": "Anonymized (media company)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Data Engineering Intern to work with our data team on building and querying data stores. You will write SQL, work with Postgres, and support Python-based data workflows. Attention to correctness and testing is valued. This is a great role for a student who enjoys working with data.",
+      "expected_keywords": ["SQL", "Postgres", "Python", "data", "testing"],
+      "forbidden_claims": ["Snowflake", "dbt", "Spark", "Scala", "Hadoop"],
+      "max_pages": 1
+    },
+    {
+      "id": "ml-intern-cv",
+      "title": "Machine Learning Intern (CV screen)",
+      "company": "Anonymized (AI product team)",
+      "doc_type": "cv",
+      "placeholder": true,
+      "jd_text": "Machine Learning Intern. We build LLM features and care deeply about output quality. You will work in Python, help evaluate models, and contribute to retrieval pipelines. Ideal candidates have hands-on projects in ML evaluation, RAG, or applied NLP, and can write well-tested code.",
+      "expected_keywords": ["Python", "machine learning", "evaluation", "retrieval", "RAG", "tests"],
+      "forbidden_claims": ["Go", "C++", "Kubernetes", "Spark"],
+      "max_pages": 2
+    },
+    {
+      "id": "backend-grad-cv",
+      "title": "Graduate Software Engineer (CV screen)",
+      "company": "Anonymized (payments)",
+      "doc_type": "cv",
+      "placeholder": true,
+      "jd_text": "Graduate Software Engineer. Build reliable backend services in Python, design REST APIs, and work with relational databases. We expect strong fundamentals, testing discipline, and the ability to collaborate. Bonus: containerisation with Docker and CI experience.",
+      "expected_keywords": ["Python", "REST", "database", "tests", "Docker", "CI"],
+      "forbidden_claims": ["Java", "Go", "Terraform", "AWS Lambda at scale"],
+      "max_pages": 2
+    },
+    {
+      "id": "nlp-intern",
+      "title": "NLP Intern",
+      "company": "Anonymized (health tech)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "NLP Intern to help build text-understanding features. You will work with embeddings, retrieval, and evaluation of language models in Python. A strong grasp of ML fundamentals and careful experimentation is required. Interest in responsible, grounded AI is a plus.",
+      "expected_keywords": ["Python", "embeddings", "retrieval", "evaluation", "machine learning", "grounded"],
+      "forbidden_claims": ["spaCy production pipelines", "CUDA", "Rust", "clinical NLP certification"],
+      "max_pages": 1
+    },
+    {
+      "id": "analytics-grad",
+      "title": "Graduate Analytics Engineer",
+      "company": "Anonymized (retail)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Graduate Analytics Engineer to turn data into insight. Strong SQL, Python for analysis, and clear communication of results to non-technical stakeholders. You will validate data, build reporting, and support decision-making. A rigorous, detail-oriented approach is essential.",
+      "expected_keywords": ["SQL", "Python", "data", "communication", "validate"],
+      "forbidden_claims": ["dbt", "Looker", "Tableau", "Power BI", "Fivetran"],
+      "max_pages": 1
+    },
+    {
+      "id": "ai-engineer-grad",
+      "title": "Graduate AI Engineer",
+      "company": "Anonymized (B2B SaaS)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Graduate AI Engineer to build LLM-powered product features. You will integrate retrieval-augmented generation, evaluate output quality, and ship in Python with a TypeScript frontend. We value engineers who measure what they build and care about grounding and correctness.",
+      "expected_keywords": ["Python", "retrieval", "evaluation", "TypeScript", "grounding", "LLM"],
+      "forbidden_claims": ["LangGraph production", "Pinecone enterprise", "Go", "Elixir"],
+      "max_pages": 1
+    },
+    {
+      "id": "research-assistant-grad",
+      "title": "Research Software Engineer (Graduate)",
+      "company": "Anonymized (university spin-out)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Research Software Engineer to support ML research. You will implement experiments in Python and PyTorch, build reproducible evaluation, and analyse results with pandas. Good scientific communication and careful methodology are essential.",
+      "expected_keywords": ["Python", "PyTorch", "experiments", "evaluation", "pandas", "methodology"],
+      "forbidden_claims": ["MATLAB", "C++", "MPI", "HPC cluster administration"],
+      "max_pages": 1
+    },
+    {
+      "id": "platform-intern",
+      "title": "Software Engineering Intern (Platform)",
+      "company": "Anonymized (logistics)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Software Engineering Intern on our platform team. Build APIs in Python, write automated tests, and work with a Postgres database. You will collaborate with senior engineers and learn production engineering practices. Docker exposure welcome.",
+      "expected_keywords": ["Python", "API", "tests", "Postgres", "Docker", "collaborate"],
+      "forbidden_claims": ["Go", "gRPC", "Terraform", "service mesh"],
+      "max_pages": 1
+    },
+    {
+      "id": "genai-intern",
+      "title": "Generative AI Intern",
+      "company": "Anonymized (consulting)",
+      "doc_type": "cover_letter",
+      "placeholder": true,
+      "jd_text": "Generative AI Intern to prototype LLM applications for clients. You will build retrieval-augmented systems in Python, evaluate outputs for grounding and accuracy, and present prototypes. Strong communication and a bias toward measurable quality are important.",
+      "expected_keywords": ["Python", "retrieval", "evaluation", "grounding", "communication", "LLM"],
+      "forbidden_claims": ["Azure OpenAI enterprise", "Databricks", "Java", "Salesforce"],
+      "max_pages": 1
+    }
+  ]
+}
