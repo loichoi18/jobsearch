@@ -16,14 +16,6 @@ jobs:
     defaults:
       run:
         working-directory: backend
-    env:
-      # Dummy values so pydantic-settings loads; mock mode makes no real calls.
-      SUPABASE_URL: https://ci.example.supabase.co
-      SUPABASE_SERVICE_KEY: ci
-      SUPABASE_JWT_SECRET: ci-secret
-      GEMINI_API_KEY: ci
-      ADZUNA_APP_ID: ci
-      ADZUNA_APP_KEY: ci
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,9 +24,20 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: pip install -r requirements.txt
+      # No env here: conftest.py injects its own test env, and test_settings
+      # asserts against those exact values — real env vars would override them.
       - name: Run backend tests
         run: python -m pytest -q
+      # Dummy env only for the harness step (mock mode makes no real calls, but
+      # importing settings still needs the vars present).
       - name: Run eval harness (mock) with regression gate
+        env:
+          SUPABASE_URL: https://ci.example.supabase.co
+          SUPABASE_SERVICE_KEY: ci
+          SUPABASE_JWT_SECRET: ci-secret
+          GEMINI_API_KEY: ci
+          ADZUNA_APP_ID: ci
+          ADZUNA_APP_KEY: ci
         run: >
           python -m evaluation.harness --dataset v1 --mock
           --min-grounding 0.85 --max-fabrication 0.0

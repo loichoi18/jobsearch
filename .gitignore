@@ -24,6 +24,8 @@ venv/
 bin/
 dist/
 *.pdf
+# ...but keep test fixtures (the profile-upload test needs this PDF in CI)
+!backend/tests/fixtures/*.pdf
 
 # Eval harness generated reports (keep .gitkeep + latest.* as a README sample)
 backend/evaluation/reports/*
