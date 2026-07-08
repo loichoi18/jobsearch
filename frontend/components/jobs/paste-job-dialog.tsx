@@ -27,34 +27,42 @@ export function PasteJobDialog({ open, onClose, onSaved }: Props) {
   async function submit() {
     setSaving(true);
     setError(null);
-    const res = await apiFetch("/api/jobs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        source: "manual",
-        title,
-        company: company || null,
-        url: url || null,
-        description: description || null,
-      }),
-    });
-    setSaving(false);
-    if (!res.ok) {
-      const body = await res.json().catch(() => null);
-      const detail = body?.detail;
+    try {
+      const res = await apiFetch("/api/jobs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "manual",
+          title,
+          company: company || null,
+          url: url || null,
+          description: description || null,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        const detail = body?.detail;
+        setError(
+          typeof detail === "string"
+            ? detail
+            : "Please provide a title and either a URL or the job description text."
+        );
+        return;
+      }
+      setTitle("");
+      setCompany("");
+      setUrl("");
+      setDescription("");
+      onSaved();
+      onClose();
+    } catch {
       setError(
-        typeof detail === "string"
-          ? detail
-          : "Please provide a title and either a URL or the job description text."
+        "Couldn't reach the server. It may be waking up (free tier can take ~50s) " +
+          "or the API URL isn't configured. Please try again in a moment."
       );
-      return;
+    } finally {
+      setSaving(false);
     }
-    setTitle("");
-    setCompany("");
-    setUrl("");
-    setDescription("");
-    onSaved();
-    onClose();
   }
 
   return (

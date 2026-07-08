@@ -34,42 +34,65 @@ export function SearchPanel({ onSaved }: { onSaved: () => void }) {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const res = await apiFetch("/api/profile");
-      if (!res.ok || cancelled) return;
-      const body = await res.json();
-      const locs: string[] = body?.structured?.preferred_locations ?? [];
-      if (locs.length > 0) setWhere((w) => (w ? w : cityOf(locs[0])));
+      try {
+        const res = await apiFetch("/api/profile");
+        if (!res.ok || cancelled) return;
+        const body = await res.json();
+        const locs: string[] = body?.structured?.preferred_locations ?? [];
+        if (locs.length > 0) setWhere((w) => (w ? w : cityOf(locs[0])));
+      } catch {
+        /* best-effort default; ignore if the backend isn't reachable */
+      }
     })();
     return () => {
       cancelled = true;
     };
   }, []);
 
+  const UNREACHABLE =
+    "Couldn't reach the server. It may be waking up (free tier can take ~50s) " +
+    "or NEXT_PUBLIC_API_URL isn't set. Try again in a moment.";
+
   async function search() {
     setLoading(true);
     setError(null);
-    const params = new URLSearchParams({ what, where, page: "1" });
-    const res = await apiFetch(`/api/jobs/search?${params}`);
-    setLoading(false);
-    if (!res.ok) {
-      setError("Search failed — Adzuna may be rate-limited. Try again shortly.");
-      return;
+    try {
+      const params = new URLSearchParams({ what, where, page: "1" });
+      const res = await apiFetch(`/api/jobs/search?${params}`);
+      if (!res.ok) {
+        setError(
+          "Search failed — Adzuna may be rate-limited. Try again shortly."
+        );
+        return;
+      }
+      const body: JobSearchResponse = await res.json();
+      setResults(body.results);
+    } catch {
+      setError(UNREACHABLE);
+    } finally {
+      setLoading(false);
     }
-    const body: JobSearchResponse = await res.json();
-    setResults(body.results);
   }
 
   async function save(result: JobSearchResult) {
     setSavingId(result.adzuna_id);
-    const res = await apiFetch("/api/jobs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ source: "adzuna", payload: result }),
-    });
-    setSavingId(null);
-    if (res.ok) {
-      setSavedIds((prev) => new Set(prev).add(result.adzuna_id));
-      onSaved();
+    setError(null);
+    try {
+      const res = await apiFetch("/api/jobs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "adzuna", payload: result }),
+      });
+      if (res.ok) {
+        setSavedIds((prev) => new Set(prev).add(result.adzuna_id));
+        onSaved();
+      } else {
+        setError("Couldn't save that job. Try again shortly.");
+      }
+    } catch {
+      setError(UNREACHABLE);
+    } finally {
+      setSavingId(null);
     }
   }
 
