@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from slowapi.errors import RateLimitExceeded
 
 from api.documents import router as documents_router
+from api.enhance import router as enhance_router
 from api.evals import router as evals_router
 from api.health import router as health_router
 from api.insights import router as insights_router
@@ -47,6 +48,7 @@ def create_app() -> FastAPI:
     app.include_router(retrieval_router)
     app.include_router(jobs_router)
     app.include_router(documents_router)
+    app.include_router(enhance_router)
     app.include_router(insights_router)
     app.include_router(evals_router)
 

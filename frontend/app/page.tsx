@@ -65,7 +65,7 @@ const STEPS = [
   {
     icon: FileSearch,
     title: "Retrieve",
-    text: "Your CV becomes a structured, embedded profile. Every job is matched against real evidence — hybrid dense + keyword retrieval.",
+    text: "Your CV becomes a structured, embedded profile. Every job is matched against real evidence, hybrid dense + keyword retrieval.",
   },
   {
     icon: PenLine,
@@ -75,7 +75,7 @@ const STEPS = [
   {
     icon: ShieldCheck,
     title: "Verify",
-    text: "A grounding verifier audits every claim against your profile. Unsupported claims are removed — never sent.",
+    text: "A grounding verifier audits every claim against your profile. Unsupported claims are removed, never sent.",
   },
 ];
 
@@ -93,7 +93,7 @@ const FEATURES = [
   {
     icon: BadgeCheck,
     title: "Skill-gap intelligence",
-    text: "Missing skills aggregated across every saved job, weighted by how often — and how hard — employers demand them.",
+    text: "Missing skills aggregated across every saved job, weighted by how often, and how hard, employers demand them.",
   },
 ];
 
@@ -138,14 +138,14 @@ export default function LandingPage() {
         <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-16 text-center sm:pt-24">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">
             <Sparkles className="h-3 w-3" aria-hidden />
-            Grounded &amp; evaluated — not a wrapper
+            Grounded &amp; evaluated, not a wrapper
           </span>
           <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold tracking-[-0.02em] sm:text-[56px] sm:leading-[1.1]">
             Job applications the model{" "}
             <span className="gradient-text">can&apos;t make up</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-slate-600">
-            Tailored CVs and cover letters for the Australian graduate market —
+            Tailored CVs and cover letters for the Australian graduate market,
             drafted from your real profile, reviewed against the JD, and
             verified claim by claim.
           </p>
@@ -221,7 +221,7 @@ export default function LandingPage() {
           <div>
             <p className="gradient-text tnum text-4xl font-bold">0</p>
             <p className="mt-1 text-sm text-slate-600">
-              unsupported claims shipped — removed by construction
+              unsupported claims shipped, removed by construction
             </p>
           </div>
           <div>

@@ -34,6 +34,31 @@
     --ring: 243 75% 59%; /* indigo focus ring everywhere */
     --radius: 0.75rem; /* 12px cards; controls use 8px explicitly */
   }
+
+  /* Dark theme (Tailwind darkMode: ["class"]). Slate-900 surfaces, brighter
+     indigo primary so it holds contrast on dark. Semantic colors keep their
+     meaning; only their lightness is nudged for AA on dark. */
+  .dark {
+    --background: 222 47% 11%; /* slate-900 */
+    --foreground: 210 40% 98%; /* slate-50 */
+    --card: 222 44% 14%; /* slate-850-ish */
+    --card-foreground: 210 40% 98%;
+    --popover: 222 44% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239 84% 71%; /* indigo-400 */
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 20%; /* slate-800 */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 72%; /* AA on slate-900 */
+    --accent: 217 33% 22%;
+    --accent-foreground: 239 84% 71%;
+    --destructive: 0 72% 62%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 24%; /* slate-700/750 */
+    --input: 217 33% 24%;
+    --ring: 239 84% 71%;
+  }
 }
 
 @layer base {

@@ -8,30 +8,34 @@ import {
   FlaskConical,
   LayoutDashboard,
   Lightbulb,
+  Sparkles,
   User,
 } from "lucide-react";
 
+import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/jobs", label: "Jobs", icon: Briefcase },
-  { href: "/insights", label: "Insights", icon: Lightbulb },
-  { href: "/profile", label: "Profile", icon: User },
-  { href: "/evals", label: "Evals", icon: FlaskConical },
+  { href: "/dashboard", labelKey: "nav.dashboard", icon: LayoutDashboard },
+  { href: "/jobs", labelKey: "nav.jobs", icon: Briefcase },
+  { href: "/enhance", labelKey: "nav.enhance", icon: Sparkles },
+  { href: "/insights", labelKey: "nav.insights", icon: Lightbulb },
+  { href: "/profile", labelKey: "nav.profile", icon: User },
+  { href: "/evals", labelKey: "nav.evals", icon: FlaskConical },
 ] as const;
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { t } = useI18n();
 
   return (
-    <aside className="flex w-56 shrink-0 flex-col border-r bg-white">
+    <aside className="flex w-56 shrink-0 flex-col border-r bg-card">
       <div className="flex h-14 items-center gap-2 border-b px-4">
-        <BarChart3 className="h-5 w-5 text-indigo-600" aria-hidden />
-        <span className="font-semibold tracking-tight">JobPilot AU</span>
+        <BarChart3 className="h-5 w-5 text-primary" aria-hidden />
+        <span className="font-semibold tracking-tight">{t("app.name")}</span>
       </div>
       <nav className="flex flex-col gap-1 p-2" aria-label="Main">
-        {navItems.map(({ href, label, icon: Icon }) => {
+        {navItems.map(({ href, labelKey, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(`${href}/`);
           return (
             <Link
@@ -41,8 +45,8 @@ export function Sidebar() {
               className={cn(
                 "relative flex items-center gap-3 rounded-[8px] px-3 py-2 text-sm font-medium transition-colors",
                 active
-                  ? "bg-indigo-50 text-indigo-700"
-                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
               )}
             >
               {/* Active nav indicator: the one gradient accent in the shell */}
@@ -53,7 +57,7 @@ export function Sidebar() {
                 />
               )}
               <Icon className="h-4 w-4" aria-hidden />
-              {label}
+              {t(labelKey)}
             </Link>
           );
         })}

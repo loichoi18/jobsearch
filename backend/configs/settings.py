@@ -20,11 +20,21 @@ class Settings(BaseSettings):
     supabase_service_key: str
     supabase_jwt_secret: str
 
-    # LLM provider (Gemini free tier; model IDs are env-swappable so the
-    # constitution fixes the abstraction, not the model string)
+    # LLM provider selection. "gemini" (default, free tier) or "claude".
+    # The abstraction is fixed by the constitution; only the model string and
+    # the vendor are env-swappable. Claude has no embedding endpoint, so the
+    # Claude provider still uses Gemini for embeddings (RAG) — set both keys.
+    llm_provider: str = "gemini"
+
+    # Gemini (generation + embeddings)
     gemini_api_key: str
     gemini_generation_model: str = "gemini-2.0-flash"
     gemini_embedding_model: str = "text-embedding-004"
+
+    # Anthropic / Claude (generation only). Required when llm_provider="claude"
+    # and by the CV-enhance endpoint. Defaults to the latest Opus.
+    anthropic_api_key: str = ""
+    claude_generation_model: str = "claude-opus-4-8"
 
     # Adzuna (AU job search)
     adzuna_app_id: str
